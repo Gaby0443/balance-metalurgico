@@ -34,11 +34,16 @@ public class ExportadorCSV {
 
             escritor.write(
                     "malla,abertura,"
+                            + "f1_medido,f1_ajustado,"
+                            + "f2_medido,f2_ajustado,"
                             + "f3_medido,f3_ajustado,"
                             + "f4_medido,f4_ajustado,"
                             + "f5_medido,f5_ajustado,"
                             + "f6_medido,f6_ajustado,"
                             + "f7_medido,f7_ajustado,"
+                            + "f8_medido,f8_ajustado,"
+                            + "error_f2,error_f3,error_f4,"
+                            + "error_f5,error_f6,error_f7,error_f8,"
                             + "lambda1,lambda2,"
                             + "residuo_nodo1,residuo_nodo2"
             );
@@ -48,8 +53,14 @@ public class ExportadorCSV {
             for (ResultadoAjuste resultado : resultados) {
 
                 escritor.write(String.join(",",
-                        escaparTexto(resultado.getMalla()),
+                        resultado.getMalla(),
                         numero(resultado.getAbertura()),
+
+                        numero(resultado.getF1Medido()),
+                        numero(resultado.getF1Ajustado()),
+
+                        numero(resultado.getF2Medido()),
+                        numero(resultado.getF2Ajustado()),
 
                         numero(resultado.getF3Medido()),
                         numero(resultado.getF3Ajustado()),
@@ -65,6 +76,17 @@ public class ExportadorCSV {
 
                         numero(resultado.getF7Medido()),
                         numero(resultado.getF7Ajustado()),
+
+                        numero(resultado.getF8Medido()),
+                        numero(resultado.getF8Ajustado()),
+
+                        numero(resultado.getErrorF2()),
+                        numero(resultado.getErrorF3()),
+                        numero(resultado.getErrorF4()),
+                        numero(resultado.getErrorF5()),
+                        numero(resultado.getErrorF6()),
+                        numero(resultado.getErrorF7()),
+                        numero(resultado.getErrorF8()),
 
                         numero(resultado.getLambda1()),
                         numero(resultado.getLambda2()),
